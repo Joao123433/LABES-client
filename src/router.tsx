@@ -1,22 +1,41 @@
 import { createBrowserRouter } from 'react-router-dom';
-import App from './App';
-import { Clientes } from './clientes/Clientes';
-import { NewCliente } from './clientes/NewCliente';
+import { RootLayout } from './components/RootLayout';
+import { Clientes } from './pages/clientes/Clientes';
+import { NewCliente } from './pages/clientes/NewCliente';
+import { Home } from './pages/Home';
+import { RootClientes } from './components/RootClientes';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/clientes',
-    element: <Clientes />,
+    path: "/",
+    element: <RootLayout />,
     children: [
       {
-        path: 'new',
-        element: <NewCliente />
+        index: true,
+        element: <Home />,
       },
-      // Adicione outras rotas filhas se necessário
-    ],
-  },
-]);
+      {
+        path: "clientes",
+        element: <RootClientes />,
+        children: [
+           {
+             index: true,
+             element: <Clientes />,
+           },
+          {
+            path: "new",
+            element: <NewCliente />
+          },
+          // {
+          //   path: ":clienteId",
+          //   element: <ShowCliente />
+          // },
+          // {
+          //   path: ":clienteId/update",
+          //   element: <UpdateCliente />
+          // }
+        ] 
+      }
+    ]
+  }
+])

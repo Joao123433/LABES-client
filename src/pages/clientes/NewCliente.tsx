@@ -2,7 +2,8 @@ export function NewCliente() {
   return (
     <>
       <form action="">
-        <h1>asdfasdfsdaf</h1>
+        <label htmlFor="">Nome</label>
+        <input type="text" />
       </form>
     </>
   )
