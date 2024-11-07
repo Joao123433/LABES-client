@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { RootLayout } from './components/RootLayout';
 import { Clientes } from './pages/clientes/Clientes';
-import { NewCliente } from './pages/clientes/NewCliente';
+import { NewCliente } from './pages/clientes/NewClient/Index';
 import { Home } from './pages/Home';
 import { RootClientes } from './components/RootClientes';
 
