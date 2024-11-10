@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { type SetStateAction, useState } from "react";
 import { Container } from "./Styles";
 import InputMask from "react-input-mask";
+import { apiCep } from "../../../services/api-cep";
 
 export function NewCliente() {
 	const [telefone, setTelefone] = useState("");
+	const [cep, setCep] = useState("");
+
+	const settingCep = async (ev: { target: { value: SetStateAction<string>; }; }) => {
+		setCep(ev.target.value)
+	}
+
+	const handleCep = async () => {
+		await apiCep.get(`${cep}`)
+			.then((res) => console.log(res))
+	}
 
 	return (
 		<>
@@ -32,7 +43,7 @@ export function NewCliente() {
 
 						<Container>
 							<label htmlFor="">CEP</label>
-							<InputMask mask={"99.999-999"} />
+							<input type="text" value={cep} onChange={settingCep} onKeyUp={handleCep} />
 						</Container>
 
 						<Container>

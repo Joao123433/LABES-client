@@ -8,6 +8,7 @@ export const Container = styled.div`
   input {
     padding: 3px 5px;
     font-size: 1.03rem;
-    color: black;
+    background-color: #3B3B3B;
+    border-radius: 8px;
   }
 `;

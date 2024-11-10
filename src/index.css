@@ -1,7 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 
 * {
 	margin: 0;
@@ -13,4 +13,16 @@
 body {
 	background-color: #262626;
 	color: #fff;
+}
+
+textarea, select {
+  background-color: #3B3B3B;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #1A1A1A;
+  border-radius: 8px;
+  border: 1px solid #1A1A1A;
+  transition: .3s;
 }
