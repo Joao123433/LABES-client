@@ -4,8 +4,24 @@ import InputMask from "react-input-mask";
 import { apiCep } from "../../../services/api-cep";
 
 export function NewCliente() {
-	const [telefone, setTelefone] = useState("");
+	const [loja, setLoja] = useState('')
+	const [nome, setNome] = useState('')
+	const [fisicaJuridica, setFisicaJuridica] = useState('')
+	const [fantasia, setFantasia] = useState('')
 	const [cep, setCep] = useState("");
+	const [estado, setEstado] = useState("");
+	const [endereco, setEndereco] = useState("");
+	const [bairro, setBairro] = useState("");
+	const [codigoMunicio, setCodigoMunicipio] = useState("");
+	const [municipio, setMunicipio] = useState("");
+	const [pais, setPais] = useState("");
+	const [telefone, setTelefone] = useState("");
+	const [cnpjCpf, setCnpjCpf] = useState("");
+	const [dataNascimento, setDataNascimento] = useState("");
+	const [email, setEmail] = useState("");
+	const [homePage, setHomePage] = useState("");
+	const [tipo, setTipo] = useState("");
+
 
 	const settingCep = async (ev: { target: { value: SetStateAction<string>; }; }) => {
 		setCep(ev.target.value)
@@ -13,32 +29,47 @@ export function NewCliente() {
 
 	const handleCep = async () => {
 		await apiCep.get(`${cep}`)
-			.then((res) => console.log(res))
+			.then((res) => {
+				console.log(res)
+
+				setEstado(res.data.uf)
+				setEndereco(res.data.logradouro)
+				setBairro(res.data.bairro)
+				setCodigoMunicipio(res.data.ibge)
+				setMunicipio(res.data.localidade)
+			})
+	}
+
+	const settingCnpjCpf = (ev: { target: { value: SetStateAction<string>; }; }) => {
+		setCnpjCpf(ev.target.value)
+
+		console.log(ev.target.value)
+		console.log(ev.target.value.length)
 	}
 
 	return (
 		<>
-			<form className="">
+			<form>
 				<section className="flex flex-col gap-4">
 					<div className="grid grid-cols-11 gap-4">
 						<Container>
 							<label htmlFor="">Loja</label>
-							<input type="text" />
+							<input type="text" value={loja} onChange={(ev) => setLoja(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-4">
 							<label htmlFor="">Nome</label>
-							<input type="text" />
+							<input type="text" value={nome} onChange={(ev) => setNome(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">
 							<label htmlFor="">Pessoa Fisica/Jurid</label>
-							<input type="text" />
+							<input type="text" value={fisicaJuridica} onChange={(ev) => setFisicaJuridica(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">
 							<label htmlFor="">Nome Fantasia</label>
-							<input type="text" />
+							<input type="text" value={fantasia} onChange={(ev) => setFantasia(ev.target.value)}/>
 						</Container>
 
 						<Container>
@@ -48,68 +79,64 @@ export function NewCliente() {
 
 						<Container>
 							<label htmlFor="">Estado</label>
-							<input type="text" />
+							<input type="text" value={estado} onChange={(ev) => setEstado(ev.target.value)} />
 						</Container>
 					</div>
 					<div className="grid grid-cols-15 gap-4">
 						<Container className="col-span-4">
 							<label htmlFor="">Endereço</label>
-							<input type="text" />
+							<input type="text" value={endereco} onChange={(ev) => setEndereco(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">
 							<label htmlFor="">Bairro</label>
-							<input type="text" />
+							<input type="text" value={bairro} onChange={(ev) => setBairro(ev.target.value)} />
 						</Container>
 
 						<Container className="col-span-2">
 							<label htmlFor="">Cd. Municipio</label>
-							<input type="text" />
+							<input type="text" value={codigoMunicio} onChange={(ev) => setCodigoMunicipio(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">
-							<label htmlFor="">Municipio</label>
-							<input type="text" />
+							<label htmlFor="">Municipio</label> 
+							<input type="text" value={municipio} onChange={(ev) => setMunicipio(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">
 							<label htmlFor="">Pais</label>
-							<input type="text" />
+							<input type="text"  value={pais} onChange={(ev) => setPais(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-3">
 							<label htmlFor="">Telefone</label>
-							<InputMask mask={"(99)99999-9999"} />
+							<InputMask mask={"(99)99999-9999"} value={telefone} onChange={(ev) => setTelefone(ev.target.value)}/>
 						</Container>
 					</div>
 					<div className="grid grid-cols-7 gap-4">
 						<Container>
 							<label htmlFor="">CNPJ/CPF</label>
 							<InputMask
-								mask={
-									telefone.length <= 11
-										? "99.999.999/9999-99"
-										: "999.999.999.99"
-								}
-								value={telefone}
-								onChange={(ev) => setTelefone(ev.target.value)}
+								mask={cnpjCpf.length >= 14 ? "99.999.999/9999-99" : "999.999.999.99"}
+								value={cnpjCpf}
+								onChange={settingCnpjCpf}
 							/>
 						</Container>
 						<Container>
 							<label htmlFor="">Data Nascimento</label>
-							<input type="date" />
+							<input type="date" value={dataNascimento} onChange={(ev) => setDataNascimento(ev.target.value)}/>
 						</Container>
 						<Container className="col-span-2">
 							<label htmlFor="">E-Mail</label>
-							<input type="text" />
+							<input type="text" value={email} onChange={(ev) => setEmail(ev.target.value)}/>
 						</Container>
 						<Container className="col-span-2">
 							<label htmlFor="">Home-Page</label>
-							<input type="text" />
+							<input type="text" value={homePage} onChange={(ev) => setHomePage(ev.target.value)}/>
 						</Container>
 						<Container>
 							<label htmlFor="">Tipo</label>
-							<input type="text" />
+							<input type="text" value={tipo} onChange={(ev) => setTipo(ev.target.value)}/>
 						</Container>
 					</div>
 				</section>
