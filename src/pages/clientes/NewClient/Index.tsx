@@ -25,26 +25,29 @@ export function NewCliente() {
 
 	const settingCep = async (ev: { target: { value: SetStateAction<string>; }; }) => {
 		setCep(ev.target.value)
+
+		setEstado("")
+		setEndereco("")
+		setBairro("")
+		setCodigoMunicipio("")
+		setMunicipio("")
 	}
 
 	const handleCep = async () => {
-		await apiCep.get(`${cep}`)
-			.then((res) => {
-				console.log(res)
-
-				setEstado(res.data.uf)
-				setEndereco(res.data.logradouro)
-				setBairro(res.data.bairro)
-				setCodigoMunicipio(res.data.ibge)
-				setMunicipio(res.data.localidade)
-			})
+		if(cep.length >= 8) {
+			await apiCep.get(`${cep}`)
+				.then((res) => {
+					setEstado(res.data.uf)
+					setEndereco(res.data.logradouro)
+					setBairro(res.data.bairro)
+					setCodigoMunicipio(res.data.ibge)
+					setMunicipio(res.data.localidade)
+				})
+		}
 	}
 
 	const settingCnpjCpf = (ev: { target: { value: SetStateAction<string>; }; }) => {
 		setCnpjCpf(ev.target.value)
-
-		console.log(ev.target.value)
-		console.log(ev.target.value.length)
 	}
 
 	return (
@@ -75,6 +78,7 @@ export function NewCliente() {
 						<Container>
 							<label htmlFor="">CEP</label>
 							<input type="text" value={cep} onChange={settingCep} onKeyUp={handleCep} />
+							{/* <InputMask mask={"99999-999"} value={cep} onChange={settingCep} onKeyUp={handleCep} /> */}
 						</Container>
 
 						<Container>
