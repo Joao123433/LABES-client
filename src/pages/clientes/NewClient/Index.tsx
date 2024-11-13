@@ -50,9 +50,13 @@ export function NewCliente() {
 		setCnpjCpf(ev.target.value)
 	}
 
+	const handleSave = () => {
+
+	}
+
 	return (
 		<>
-			<form>
+			<form className="flex flex-col gap-4 items-end">
 				<section className="flex flex-col gap-4">
 					<div className="grid grid-cols-11 gap-4">
 						<Container>
@@ -127,7 +131,7 @@ export function NewCliente() {
 							/>
 						</Container>
 						<Container>
-							<label htmlFor="">Data Nascimento</label>
+							<label htmlFor="">DN</label>
 							<input type="date" value={dataNascimento} onChange={(ev) => setDataNascimento(ev.target.value)}/>
 						</Container>
 						<Container className="col-span-2">
@@ -144,6 +148,8 @@ export function NewCliente() {
 						</Container>
 					</div>
 				</section>
+
+				<button type="button" className="py-3 px-4 hover:border-indigo-800">Salvar</button>
 			</form>
 		</>
 	);
