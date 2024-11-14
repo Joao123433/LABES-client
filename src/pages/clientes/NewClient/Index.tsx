@@ -1,57 +1,13 @@
-import { type SetStateAction, useState } from "react";
+import type { SetStateAction } from "react";
 import { Container } from "./Styles";
 import InputMask from "react-input-mask";
-import { apiCep } from "../../../services/api-cep";
+import { UseNewCliente } from "../../../hooks/UseNewCliente";
 
 export function NewCliente() {
-	const [loja, setLoja] = useState('')
-	const [nome, setNome] = useState('')
-	const [fisicaJuridica, setFisicaJuridica] = useState('')
-	const [fantasia, setFantasia] = useState('')
-	const [cep, setCep] = useState("");
-	const [estado, setEstado] = useState("");
-	const [endereco, setEndereco] = useState("");
-	const [bairro, setBairro] = useState("");
-	const [codigoMunicio, setCodigoMunicipio] = useState("");
-	const [municipio, setMunicipio] = useState("");
-	const [pais, setPais] = useState("");
-	const [telefone, setTelefone] = useState("");
-	const [cnpjCpf, setCnpjCpf] = useState("");
-	const [dataNascimento, setDataNascimento] = useState("");
-	const [email, setEmail] = useState("");
-	const [homePage, setHomePage] = useState("");
-	const [tipo, setTipo] = useState("");
-
-
-	const settingCep = async (ev: { target: { value: SetStateAction<string>; }; }) => {
-		setCep(ev.target.value)
-
-		setEstado("")
-		setEndereco("")
-		setBairro("")
-		setCodigoMunicipio("")
-		setMunicipio("")
-	}
-
-	const handleCep = async () => {
-		if(cep.length >= 8) {
-			await apiCep.get(`${cep}`)
-				.then((res) => {
-					setEstado(res.data.uf)
-					setEndereco(res.data.logradouro)
-					setBairro(res.data.bairro)
-					setCodigoMunicipio(res.data.ibge)
-					setMunicipio(res.data.localidade)
-				})
-		}
-	}
+	const { loja, setLoja, nome, setNome, fisicaJuridica, setFisicaJuridica, fantasia, setFantasia, cep, settingCep, handleCep, estado, setEstado, endereco, setEndereco, bairro, setBairro, codigoMunicipio, setCodigoMunicipio, municipio, setMunicipio, pais, setPais, telefone, setTelefone, cnpjCpf, setCnpjCpf, dataNascimento, setDataNascimento, email, setEmail, homePage, setHomePage, tipo, setTipo, handleClick} = UseNewCliente()
 
 	const settingCnpjCpf = (ev: { target: { value: SetStateAction<string>; }; }) => {
 		setCnpjCpf(ev.target.value)
-	}
-
-	const handleSave = () => {
-
 	}
 
 	return (
@@ -82,7 +38,7 @@ export function NewCliente() {
 						<Container>
 							<label htmlFor="">CEP</label>
 							<input type="text" value={cep} onChange={settingCep} onKeyUp={handleCep} />
-							{/* <InputMask mask={"99999-999"} value={cep} onChange={settingCep} onKeyUp={handleCep} /> */}
+							{/* <InputMask mask={"99999999"} value={cep} onChange={settingCep} onKeyUp={handleCep} /> */}
 						</Container>
 
 						<Container>
@@ -103,7 +59,7 @@ export function NewCliente() {
 
 						<Container className="col-span-2">
 							<label htmlFor="">Cd. Municipio</label>
-							<input type="text" value={codigoMunicio} onChange={(ev) => setCodigoMunicipio(ev.target.value)}/>
+							<input type="number" value={codigoMunicipio} onChange={(ev) => setCodigoMunicipio(Number(ev.target.value))}/>
 						</Container>
 
 						<Container className="col-span-2">
@@ -149,7 +105,7 @@ export function NewCliente() {
 					</div>
 				</section>
 
-				<button type="button" className="py-3 px-4 hover:border-indigo-800">Salvar</button>
+				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>Salvar</button>
 			</form>
 		</>
 	);
