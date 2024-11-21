@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect } from "react"
 import { api } from "../services/api"
-import type { ClientesInterface } from "../Interfaces | types/ClientesInterface"
-import type { ClientesInput } from "../Interfaces | types/ClientesOmit"
-import type { ClintesDataContext } from "../Interfaces | types/ClientesDataContext"
-import type { ClientesFetch } from "../Interfaces | types/ClientesFetch"
+import type { ClientesInterface } from "../Interfaces/ClientesInterface"
+import type { ClientesInput } from "../Interfaces/ClientesOmit"
+import type { ClintesDataContext } from "../Interfaces/ClientesDataContext"
+import type { ClientesFetch } from "../Interfaces/ClientesFetch"
 
 export const ClientesContext = createContext<ClintesDataContext>({} as ClintesDataContext)
 

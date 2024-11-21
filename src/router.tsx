@@ -26,6 +26,9 @@ export const router = createBrowserRouter([
 						path: "new",
 						element: <NewCliente />,
 					},
+
+
+					
 					// {
 					//   path: ":clienteId",
 					//   element: <ShowCliente />
@@ -37,5 +40,35 @@ export const router = createBrowserRouter([
 				],
 			},
 		],
+		// path: "/",
+		// element: <RootLayout />,
+		// children: [
+		// 	{
+		// 		index: true,
+		// 		element: <Home />,
+		// 	},
+		// 	{
+		// 		path: "clientes",
+		// 		element: <RootClientes />,
+		// 		children: [
+		// 			{
+		// 				index: true,
+		// 				element: <Clientes />,
+		// 			},
+		// 			{
+		// 				path: "new",
+		// 				element: <NewCliente />,
+		// 			},
+		// 			// {
+		// 			//   path: ":clienteId",
+		// 			//   element: <ShowCliente />
+		// 			// },
+		// 			// {
+		// 			//   path: ":clienteId/update",
+		// 			//   element: <UpdateCliente />
+		// 			// }
+		// 		],
+		// 	},
+		// ],
 	},
 ]);
