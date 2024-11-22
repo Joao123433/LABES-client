@@ -1,72 +1,115 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import UseUpdateItems from "../../../hooks/UseUpdateCliente";
+import InputMask from "react-input-mask";
+import { Container } from "./Styles";
+import type { SetStateAction } from "react";
 
 export default function UpdateItem() {
   const { itemId } = useParams()
-  const { name, settingName, quantity, settingQuantity, price, settingPrice, category, settingCategory, description, settingDescription, handleClick } = UseUpdateItems(itemId)
+  const { loja, setLoja, nome, setNome, fisicaJuridica, setFisicaJuridica, fantasia, setFantasia, cep, settingCep, handleCep, estado, setEstado, endereco, setEndereco, bairro, setBairro, codigoMunicipio, setCodigoMunicipio, municipio, setMunicipio, pais, setPais, telefone, setTelefone, cnpjCpf, setCnpjCpf, dataNascimento, setDataNascimento, email, setEmail, homePage, setHomePage, tipo, setTipo, handleClick} = UseUpdateItems(itemId)
+
+  const settingCnpjCpf = (ev: { target: { value: SetStateAction<string>; }; }) => {
+		setCnpjCpf(ev.target.value)
+	}
 
   return (
-    <section className="flex flex-col items-center gap-5 h-full">
-      <form className="w-5/6">
-        <section className="flex flex-row gap-4 justify-between">
-          <div className="w-1/4 flex flex-col gap-2">
-            <label htmlFor="name">Nome:</label>
-            <input 
-              type="text"
-              id="name" 
-              value={name} 
-              onChange={settingName} 
-              className="px-3 py-1"
-            />
-          </div>
-          <div className="w-1/4 flex flex-col gap-2">
-            <label htmlFor="amount">Quantidade:</label>
-            <input 
-              type="number" 
-              id="amount" 
-              value={quantity} 
-              onChange={settingQuantity} 
-              className="px-3 py-1"
-            />
-          </div>
-          <div className="w-1/4 flex flex-col gap-2">
-            <label htmlFor="price">Preço:</label>
-            <input 
-              type="number" 
-              id="price" 
-              value={price} 
-              onChange={settingPrice} 
-              className="px-3 py-1"
-            />
-          </div>
-          <div className="w-1/4 flex flex-col gap-2">
-            <label htmlFor="categorie">Categoria:</label>
-            <select 
-              id="categorie" 
-              className="px-3 py-1" 
-              value={category} 
-              onChange={settingCategory}
-            >
-              <option hidden>Selecione uma categoria...</option>
-              {CATEGORIES.map((category) => <option value={category} data-category={category} key={category}>{category}</option> )}
-            </select>
-          </div>
-        </section>
-      </form>
-      <div className="flex flex-col w-5/6 h-3/5 gap-2">
-        <label htmlFor="description">Descrição:</label>
-        <textarea
-          id="description"
-          className="resize-none rounded-lg h-56 px-3 py-1"
-          value={description}
-          onChange={settingDescription}
-        ></textarea>
-      </div>
-      <div className="w-5/6 flex justify-start">
-        <button onClick={handleClick} className="h-12">
-          <Link to="/controle-estoque-react/items" className="px-5 py-3 text-white">Atualizar</Link>
-        </button>
-      </div>
-    </section>
+    <form className="flex flex-col gap-4 items-end">
+				<section className="flex flex-col gap-4">
+					<div className="grid grid-cols-11 gap-4">
+						<Container>
+							<label htmlFor="">Loja</label>
+							<input type="text" value={loja} onChange={(ev) => setLoja(ev.target.value)}/>
+						</Container>
+
+						<Container className="col-span-4">
+							<label htmlFor="">Nome</label>
+							<input type="text" value={nome} onChange={(ev) => setNome(ev.target.value)}/>
+						</Container>
+
+						<Container className="col-span-2">
+							<label htmlFor="">Pessoa Fisica/Jurid</label>
+							<input type="text" value={fisicaJuridica} onChange={(ev) => setFisicaJuridica(ev.target.value)}/>
+						</Container>
+
+						<Container className="col-span-2">
+							<label htmlFor="">Nome Fantasia</label>
+							<input type="text" value={fantasia} onChange={(ev) => setFantasia(ev.target.value)}/>
+						</Container>
+
+						<Container>
+							<label htmlFor="">CEP</label>
+							<input type="text" value={cep} onChange={settingCep} onKeyUp={handleCep} />
+							{/* <InputMask mask={"99999999"} value={cep} onChange={settingCep} onKeyUp={handleCep} /> */}
+						</Container>
+
+						<Container>
+							<label htmlFor="">Estado</label>
+							<input type="text" value={estado} onChange={(ev) => setEstado(ev.target.value)} />
+						</Container>
+					</div>
+					<div className="grid grid-cols-15 gap-4">
+						<Container className="col-span-4">
+							<label htmlFor="">Endereço</label>
+							<input type="text" value={endereco} onChange={(ev) => setEndereco(ev.target.value)}/>
+						</Container>
+
+						<Container className="col-span-2">
+							<label htmlFor="">Bairro</label>
+							<input type="text" value={bairro} onChange={(ev) => setBairro(ev.target.value)} />
+						</Container>
+
+						<Container className="col-span-2">
+							<label htmlFor="">Cd. Municipio</label>
+							<input type="number" value={codigoMunicipio} onChange={(ev) => setCodigoMunicipio(Number(ev.target.value))}/>
+						</Container>
+
+						<Container className="col-span-2">
+							<label htmlFor="">Municipio</label> 
+							<input type="text" value={municipio} onChange={(ev) => setMunicipio(ev.target.value)}/>
+						</Container>
+
+						<Container className="col-span-2">
+							<label htmlFor="">Pais</label>
+							<input type="text"  value={pais} onChange={(ev) => setPais(ev.target.value)}/>
+						</Container>
+
+						<Container className="col-span-3">
+							<label htmlFor="">Telefone</label>
+							<InputMask mask={"(99)99999-9999"} value={telefone} onChange={(ev) => setTelefone(ev.target.value)}/>
+						</Container>
+					</div>
+					<div className="grid grid-cols-7 gap-4">
+						<Container>
+							<label htmlFor="">CNPJ/CPF</label>
+							<input
+								value={cnpjCpf}
+								onChange={settingCnpjCpf}
+							/>
+						</Container>
+						<Container>
+							<label htmlFor="">DN</label>
+							<input 
+                type="date" 
+                value={dataNascimento ? dataNascimento.toISOString().split('T')[0] : ''} 
+                onChange={(ev) => setDataNascimento(new Date(ev.target.value))} 
+              />
+						</Container>
+						<Container className="col-span-2">
+							<label htmlFor="">E-Mail</label>
+							<input type="text" value={email} onChange={(ev) => setEmail(ev.target.value)}/>
+						</Container>
+						<Container className="col-span-2">
+							<label htmlFor="">Home-Page</label>
+							<input type="text" value={homePage} onChange={(ev) => setHomePage(ev.target.value)}/>
+						</Container>
+						<Container>
+							<label htmlFor="">Tipo</label>
+							<input type="text" value={tipo} onChange={(ev) => setTipo(ev.target.value)}/>
+						</Container>
+					</div>
+				</section>
+
+				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>Salvar</button>
+			</form>
   )
 }

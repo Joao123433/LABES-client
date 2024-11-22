@@ -5,5 +5,5 @@ export interface ClintesDataContext {
 	clientes: ClientesFetch[];
 	createCliente: (cliente: ClientesInput) => Promise<void>;
 	updateCliente: (cliente: ClientesFetch) => Promise<void>;
-	deleteCliente: (id: string) => Promise<void>;
+	deleteCliente: (id: number) => Promise<void>;
 }

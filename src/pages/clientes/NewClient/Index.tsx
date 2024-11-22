@@ -80,8 +80,7 @@ export function NewCliente() {
 					<div className="grid grid-cols-7 gap-4">
 						<Container>
 							<label htmlFor="">CNPJ/CPF</label>
-							<InputMask
-								mask={cnpjCpf.length >= 14 ? "99.999.999/9999-99" : "999.999.999.99"}
+							<input
 								value={cnpjCpf}
 								onChange={settingCnpjCpf}
 							/>

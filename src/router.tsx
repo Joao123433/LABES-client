@@ -30,11 +30,11 @@ export const router = createBrowserRouter([
 
 					
 					// {
-					//   path: ":clienteId",
+					//   path: ":clientId",
 					//   element: <ShowCliente />
 					// },
 					// {
-					//   path: ":clienteId/update",
+					//   path: ":clientId/update",
 					//   element: <UpdateCliente />
 					// }
 				],

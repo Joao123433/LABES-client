@@ -32,7 +32,7 @@ export function ItemProvider({ children }: ClientesInterface) {
     setClientes([updateItem, ...ClientesFilter])
   }
 
-  async function deleteCliente(id: string) {
+  async function deleteCliente(id: number) {
     const response = await api.delete(`deletar/${id}`)
 
     const ClientesFilter = clientes.filter((clientes) => clientes.codigo !== response.data.codigo) 
