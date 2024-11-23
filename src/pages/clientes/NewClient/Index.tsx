@@ -2,6 +2,7 @@ import type { SetStateAction } from "react";
 import { Container } from "./Styles";
 import InputMask from "react-input-mask";
 import { UseNewCliente } from "../../../hooks/UseNewCliente";
+import { Link } from "react-router-dom";
 
 export function NewCliente() {
 	const { loja, setLoja, nome, setNome, fisicaJuridica, setFisicaJuridica, fantasia, setFantasia, cep, settingCep, handleCep, estado, setEstado, endereco, setEndereco, bairro, setBairro, codigoMunicipio, setCodigoMunicipio, municipio, setMunicipio, pais, setPais, telefone, setTelefone, cnpjCpf, setCnpjCpf, dataNascimento, setDataNascimento, email, setEmail, homePage, setHomePage, tipo, setTipo, handleClick} = UseNewCliente()
@@ -104,7 +105,9 @@ export function NewCliente() {
 					</div>
 				</section>
 
-				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>Salvar</button>
+				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>
+					<Link to="/clientes" className="px-3 py-1 text-white font-bold">Excluir</Link>
+				</button>
 			</form>
 		</>
 	);

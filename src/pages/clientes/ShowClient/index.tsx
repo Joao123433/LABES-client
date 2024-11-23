@@ -17,7 +17,7 @@ export default function ShowItem() {
               <button type="button" className="bg-white px-3 py-1 border-0 hover:scale-105 h-full">Atualizar</button>
             </Link>
             <button type="button" className="bg-red-500 text-black border-0 hover:scale-105" onClick={() => {clientContext.deleteCliente(codigo as string)}}>
-              <Link to="/controle-estoque-react/" className="text-black px-3 py-1">Excluir</Link>
+              <Link to="/clientes" className="text-black px-3 py-1">Excluir</Link>
             </button>
           </div>
         </div>
