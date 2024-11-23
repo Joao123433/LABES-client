@@ -104,7 +104,7 @@ src/
 
 ## Configuração e Uso
 ### Pré-requisitos
-- Node.js (recomendado: versão 18 ou superior)
+- Node.js (recomendado: versão 22.9)
 - Gerenciador de pacotes npm ou yarn.
 
 ### Passo a Passo
