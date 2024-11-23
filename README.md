@@ -1,50 +1,133 @@
-# React + TypeScript + Vite
+# Documentação do Projeto React + TOTVS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição do Projeto
+Este é um projeto desenvolvido com React, utilizando um conjunto de bibliotecas e ferramentas modernas para criar interfaces de usuário eficientes, estilização dinâmica e integração com APIs externas, como a API de CEP. O projeto foi estruturado utilizando uma arquitetura modular, que aproveita a componentização e modularidade para melhorar a organização, escalabilidade e manutenção do código.
 
-Currently, two official plugins are available:
+## Dependências
+As dependências do projeto são bibliotecas essenciais para o funcionamento da aplicação:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Dependências de Produção
+1. React (`^18.3.1`)
+Biblioteca principal para construção de interfaces de usuário.
 
-## Expanding the ESLint configuration
+2. React-DOM (`^18.3.1`)
+Permite que React manipule o DOM (Document Object Model).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. React-Input-Mask (`^2.0.4`)
+Fornece componentes de entrada com máscaras para campos de formulário.
 
-- Configure the top-level `parserOptions` property like this:
+4. React-Router-DOM (`^6.27.0`)
+Gerencia navegação e roteamento dentro do aplicativo.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+5. Styled-Components (`^6.1.13`)
+Permite criar componentes estilizados com CSS-in-JS.
+
+### Dependências de Desenvolvimento
+1. @vitejs/plugin-react (`^4.3.3`)
+Plugin para integrar React com Vite, ferramenta de construção rápida.
+
+2. TypeScript (`~5.6.2`)
+Fornece suporte a tipagem estática no JavaScript.
+
+3. @types/react e @types/react-dom
+Adiciona definições de tipos para bibliotecas React e React-DOM.
+
+4. @types/react-input-mask
+Tipos para a biblioteca `react-input-mask`.
+
+5. TailwindCSS (`^3.4.14`)
+Framework CSS utilitário para criação rápida de estilos.
+
+6. PostCSS e Autoprefixer
+Processa CSS para adicionar suporte a navegadores automaticamente.
+
+7. Globals (`^15.11.0`)
+Define variáveis globais para uso no código.
+
+8. Vite (`^5.4.10`)
+Ferramenta de build rápida e eficiente.
+
+9. BiomeJS
+Ferramenta moderna para formatação e linting de código, substituindo o ESLint.
+
+## API Utilizada
+A aplicação consome a API de CEP disponível em https://opencep.com/v1/.
+Essa API permite consultar informações de endereço a partir de um CEP, facilitando o preenchimento de dados em formulários.
+
+#### Exemplo de uso:
+
+- Endpoint para buscar informações de um CEP:
+  `https://opencep.com/v1/cep/{CEP}`
+
+- Retorno típico:
+
+```json
+{
+  "cep": "01001-000",
+  "logradouro": "Praça da Sé",
+  "bairro": "Sé",
+  "localidade": "São Paulo",
+  "uf": "SP"
+}
+```
+## Arquitetura Modular
+O projeto foi desenvolvido seguindo o princípio da arquitetura modular, que organiza a aplicação em módulos independentes e coesos.
+
+### Vantagens da Arquitetura Modular
+1. Reutilização de Código: Componentes e módulos podem ser facilmente reaproveitados em diferentes partes do projeto.
+2. Manutenção Facilitada: Cada módulo funciona de maneira independente, facilitando a identificação e correção de problemas.
+3. Escalabilidade: Novos recursos podem ser adicionados sem interferir no funcionamento das partes já existentes.
+4. Separação de Preocupações: Módulos possuem responsabilidades claras, reduzindo a complexidade do código.
+
+### Estrutura Modular do Projeto
+
+```plaintext
+src/
+├── components/      # Componentes reutilizáveis
+├── context/         # Módulos independentes
+├── hooks/           # Módulos independentes
+├── pages/           # Módulos independentes
+│   ├── clientes/        # Lógica de autenticação
+│   │   ├── NewClient/
+│   │       ├── index.tsx  # index do novo client
+│   │       ├── Styles.ts  # Arquivo do styled components
+│   │   ├── ShowClient/
+│   │   ├── UpdateClient/
+│   │   ├── Cliente.txt    
+│   ├── Home.txt     
+├── services/          # variaveis do axios para requisicoes
+├── App.tsx            # Componente raiz
+├── index.css          # Estilos globais e temas
+├── main.tsx           # Ponto de entrada da aplicação
+├── router.txt         # arquivo de configuracao das rotas do projeto
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Configuração e Uso
+### Pré-requisitos
+- Node.js (recomendado: versão 18 ou superior)
+- Gerenciador de pacotes npm ou yarn.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Passo a Passo
+1. Clone o repositório:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+git clone https://github.com/Joao123433/LABES-client
+cd LABES-client
 ```
+2. Instale as dependências:
+
+```bash
+npm install
+# ou
+yarn
+```
+
+3. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+4- Acesse a aplicação no navegador:
+Abra o navegador e acesse `http://localhost:5173`.
