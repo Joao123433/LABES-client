@@ -35,12 +35,12 @@ export function Clientes() {
 									<td className="py-2 w-1/5">{cliente.homePage}</td>
 									<td className="py-2 w-1/5">{cliente.cidade}</td>
 									<td className="py-2 w-1/4 flex gap-5">
-										<Link to={`"/items/show/"`} className="text-black">
+										<Link to={`${cliente.codigo}`} className="text-black">
 											<button type="button" className="bg-blue-500 px-3 py-1 border-0 hover:scale-105 rounded-sm">
 												Ver
 											</button>
 										</Link>
-										<Link to={`"/items/update/"`} className="text-black">
+										<Link to={`/items/update/${cliente.codigo}`} className="text-black">
 											<button type="button" className="bg-white px-3 py-1 border-0 hover:scale-105 rounded-sm">
 												Atualizar
 											</button>

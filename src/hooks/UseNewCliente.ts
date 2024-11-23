@@ -11,7 +11,7 @@ export function UseNewCliente() {
 	const [estado, setEstado] = useState("");
 	const [endereco, setEndereco] = useState("");
 	const [bairro, setBairro] = useState("");
-	const [codigoMunicipio, setCodigoMunicipio] = useState(0);
+	const [codigoMunicipio, setCodigoMunicipio] = useState("");
 	const [municipio, setMunicipio] = useState("");
 	const [pais, setPais] = useState("");
 	const [telefone, setTelefone] = useState("");
@@ -30,7 +30,7 @@ export function UseNewCliente() {
 		setEstado("");
 		setEndereco("");
 		setBairro("");
-		setCodigoMunicipio(0);
+		setCodigoMunicipio("");
 		setMunicipio("");
 	};
 
@@ -58,15 +58,16 @@ export function UseNewCliente() {
 			estado: estado,
 			endereco: endereco,
 			bairro: bairro,
-			codigoMunicipio: Number(codigoMunicipio),
+			codigoMunicipio: codigoMunicipio,
 			municipio: municipio,
 			pais: pais,
 			telefone: telefone,
 			cnpjCpf: cnpjCpf,
-			dataNascimento: new Date(dataNascimento),
+			dataNascimento: dataNascimento,
 			email: email,
 			homePage: homePage,
 			tipo: tipo,
+			cidade: municipio,
 		};
 
 		setLoja("");
@@ -77,7 +78,7 @@ export function UseNewCliente() {
 		setEstado("");
 		setEndereco("");
 		setBairro("");
-		setCodigoMunicipio(0);
+		setCodigoMunicipio("");
 		setMunicipio("");
 		setPais("");
 		setTelefone("");

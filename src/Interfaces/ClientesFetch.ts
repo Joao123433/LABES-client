@@ -8,12 +8,12 @@ export interface ClientesFetch {
 	estado: string;
 	endereco: string;
 	bairro: string;
-	codigoMunicipio: number;
+	codigoMunicipio: string;
 	municipio: string;
 	pais: string;
 	telefone: string;
 	cnpjCpf: string;
-	dataNascimento: Date;
+	dataNascimento: string;
 	email: string;
 	homePage: string;
 	tipo: string;

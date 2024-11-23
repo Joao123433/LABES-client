@@ -59,7 +59,7 @@ export function NewCliente() {
 
 						<Container className="col-span-2">
 							<label htmlFor="">Cd. Municipio</label>
-							<input type="number" value={codigoMunicipio} onChange={(ev) => setCodigoMunicipio(Number(ev.target.value))}/>
+							<input type="number" value={codigoMunicipio} onChange={(ev) => setCodigoMunicipio(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">

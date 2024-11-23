@@ -15,6 +15,8 @@ export function ItemProvider({ children }: ClientesInterface) {
   }, [])
 
   async function createCliente(ClientesData: ClientesInput) {
+    console.log(ClientesData)
+
     const response = await api.post("incluir", {...ClientesData})
 
     const cliente = response.data
