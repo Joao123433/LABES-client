@@ -1,5 +1,5 @@
 export interface ClientesFetch {
-	codigo: number;
+	codigo: string;
 	loja: string;
 	nome: string;
 	fisicaJuridica: string;
@@ -17,4 +17,5 @@ export interface ClientesFetch {
 	email: string;
 	homePage: string;
 	tipo: string;
+	cidade: string;
 }
