@@ -129,5 +129,5 @@ npm run dev
 yarn dev
 ```
 
-4- Acesse a aplicação no navegador:
+4. Acesse a aplicação no navegador:
 Abra o navegador e acesse `http://localhost:5173`.
