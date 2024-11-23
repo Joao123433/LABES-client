@@ -25,13 +25,11 @@ export function ItemProvider({ children }: ClientesInterface) {
   }
 
   async function updateCliente(ClientesData: ClientesFetch) {
-    const response = await api.put(`atualizar/${ClientesData.codigo}`, {...ClientesData, updatedAt: new Date()})
+    const response = await api.put('atualizar', {...ClientesData})
 
-    const updateItem: ClientesFetch = response.data
+    const ClientesFilter = clientes.filter(clientes => clientes.codigo !== response.data[0].codigo)
 
-    const ClientesFilter = clientes.filter(clientes => clientes.codigo !== updateItem.codigo)
-
-    setClientes([updateItem, ...ClientesFilter])
+    setClientes([response.data[0], ...ClientesFilter])
   }
 
   async function deleteCliente(codigo: string) {

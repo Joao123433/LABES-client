@@ -50,8 +50,6 @@ export function Home() {
 						</tr>
 					</thead>
 					<tbody className="py-1 px-5 flex flex-col gap-5 mt-3 overflow-y-scroll h-5/6">
-
-
 								<tr className="w-full flex justify-between">
 									<td className="w-2/6">4566</td>
 									<td className="w-2/6">123</td>

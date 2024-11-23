@@ -40,7 +40,7 @@ export function Clientes() {
 												Ver
 											</button>
 										</Link>
-										<Link to={`/items/update/${cliente.codigo}`} className="text-black">
+										<Link to={`atualizar/${cliente.codigo}`} className="text-black">
 											<button type="button" className="bg-white px-3 py-1 border-0 hover:scale-105 rounded-sm">
 												Atualizar
 											</button>

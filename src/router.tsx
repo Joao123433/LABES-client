@@ -5,6 +5,7 @@ import { NewCliente } from "./pages/clientes/NewClient/Index";
 import { Home } from "./pages/Home";
 import { RootClientes } from "./components/RootClientes";
 import ShowClient from "./pages/clientes/ShowClient";
+import UpdateClient from "./pages/clientes/UpdateClient";
 
 export const router = createBrowserRouter([
 	{
@@ -31,10 +32,10 @@ export const router = createBrowserRouter([
 					  path: ":codigo",
 					  element: <ShowClient />
 					},
-					// {
-					//   path: ":clientId/update",
-					//   element: <UpdateCliente />
-					// }
+					{
+					  path: "atualizar/:codigo",
+					  element: <UpdateClient />
+					}
 				],
 			},
 		],

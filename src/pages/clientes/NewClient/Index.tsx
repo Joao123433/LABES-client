@@ -106,7 +106,7 @@ export function NewCliente() {
 				</section>
 
 				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>
-					<Link to="/clientes" className="px-3 py-1 text-white font-bold">Excluir</Link>
+					<Link to="/clientes" className="px-3 py-1 text-white font-bold">Confirmar</Link>
 				</button>
 			</form>
 		</>

@@ -1,32 +1,40 @@
-import { useState, type SetStateAction } from "react"
-import type { ClientesFetch } from "../Interfaces/ClientesFetch"
-import { UseCliente } from "./UseCliente"
-import { apiCep } from "../services/api-cep"
+import { useState, type SetStateAction } from "react";
+import type { ClientesFetch } from "../Interfaces/ClientesFetch";
+import { UseCliente } from "./UseCliente";
+import { apiCep } from "../services/api-cep";
 
 export default function UseUpdateItems(itemId: string | undefined) {
-  const clientContext = UseCliente()
-  const clientFind = clientContext.clientes.find(client => client.codigo === Number(itemId)) as ClientesFetch
+	const clientContext = UseCliente();
+	const clientFind = clientContext.clientes.find(
+		(client) => client.codigo === itemId,
+	) as ClientesFetch;
 
-  const [codigo, _] = useState(clientFind.codigo);
-  const [loja, setLoja] = useState(clientFind.loja);
+	const [codigo, _] = useState(clientFind.codigo);
+	const [loja, setLoja] = useState(clientFind.loja);
 	const [nome, setNome] = useState(clientFind.nome);
-	const [fisicaJuridica, setFisicaJuridica] = useState(clientFind.fisicaJuridica);
+	const [fisicaJuridica, setFisicaJuridica] = useState(
+		clientFind.fisicaJuridica,
+	);
 	const [fantasia, setFantasia] = useState(clientFind.fantasia);
 	const [cep, setCep] = useState(clientFind.cep);
 	const [estado, setEstado] = useState(clientFind.endereco);
 	const [endereco, setEndereco] = useState(clientFind.endereco);
 	const [bairro, setBairro] = useState(clientFind.bairro);
-	const [codigoMunicipio, setCodigoMunicipio] = useState(Number(clientFind.codigoMunicipio));
+	const [codigoMunicipio, setCodigoMunicipio] = useState(
+		clientFind.codigoMunicipio,
+	);
 	const [municipio, setMunicipio] = useState(clientFind.municipio);
 	const [pais, setPais] = useState(clientFind.pais);
 	const [telefone, setTelefone] = useState(clientFind.telefone);
 	const [cnpjCpf, setCnpjCpf] = useState(clientFind.cnpjCpf);
-	const [dataNascimento, setDataNascimento] = useState(clientFind.dataNascimento);
+	const [dataNascimento, setDataNascimento] = useState(
+		clientFind.dataNascimento,
+	);
 	const [email, setEmail] = useState(clientFind.email);
 	const [homePage, setHomePage] = useState(clientFind.homePage);
 	const [tipo, setTipo] = useState(clientFind.tipo);
 
-  const settingCep = async (ev: {
+	const settingCep = async (ev: {
 		target: { value: SetStateAction<string> };
 	}) => {
 		setCep(ev.target.value);
@@ -34,7 +42,7 @@ export default function UseUpdateItems(itemId: string | undefined) {
 		setEstado("");
 		setEndereco("");
 		setBairro("");
-		setCodigoMunicipio(0);
+		setCodigoMunicipio("");
 		setMunicipio("");
 	};
 
@@ -50,12 +58,12 @@ export default function UseUpdateItems(itemId: string | undefined) {
 		}
 	};
 
-  const handleClick = (e: { preventDefault: () => void }) => {
-    e.preventDefault()
+	const handleClick = (e: { preventDefault: () => void }) => {
+		e.preventDefault();
 
-    const client: ClientesFetch = {
-      codigo: codigo,
-      loja: loja,
+		const client: ClientesFetch = {
+			codigo: codigo,
+			loja: loja,
 			nome: nome,
 			fisicaJuridica: fisicaJuridica,
 			fantasia: fantasia,
@@ -63,18 +71,19 @@ export default function UseUpdateItems(itemId: string | undefined) {
 			estado: estado,
 			endereco: endereco,
 			bairro: bairro,
-			codigoMunicipio: Number(codigoMunicipio),
+			codigoMunicipio: codigoMunicipio,
 			municipio: municipio,
 			pais: pais,
 			telefone: telefone,
 			cnpjCpf: cnpjCpf,
-			dataNascimento: new Date(dataNascimento),
+			dataNascimento: dataNascimento,
 			email: email,
 			homePage: homePage,
 			tipo: tipo,
-    }
+			cidade: municipio,
+		};
 
-    clientContext.updateCliente(client)
+		clientContext.updateCliente(client);
 
 		setLoja("");
 		setNome("");
@@ -84,19 +93,19 @@ export default function UseUpdateItems(itemId: string | undefined) {
 		setEstado("");
 		setEndereco("");
 		setBairro("");
-		setCodigoMunicipio(0);
+		setCodigoMunicipio("");
 		setMunicipio("");
 		setPais("");
 		setTelefone("");
 		setCnpjCpf("");
-		setDataNascimento(new Date());
+		setDataNascimento("");
 		setEmail("");
 		setHomePage("");
 		setTipo("");
-  }
+	};
 
-
-  return {
+	return {
+		codigo,
 		loja,
 		setLoja,
 		nome,

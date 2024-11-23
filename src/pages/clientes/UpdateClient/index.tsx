@@ -1,14 +1,16 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import UseUpdateItems from "../../../hooks/UseUpdateCliente";
 import InputMask from "react-input-mask";
 import { Container } from "./Styles";
 import type { SetStateAction } from "react";
 
 export default function UpdateItem() {
-  const { itemId } = useParams()
-  const { loja, setLoja, nome, setNome, fisicaJuridica, setFisicaJuridica, fantasia, setFantasia, cep, settingCep, handleCep, estado, setEstado, endereco, setEndereco, bairro, setBairro, codigoMunicipio, setCodigoMunicipio, municipio, setMunicipio, pais, setPais, telefone, setTelefone, cnpjCpf, setCnpjCpf, dataNascimento, setDataNascimento, email, setEmail, homePage, setHomePage, tipo, setTipo, handleClick} = UseUpdateItems(itemId)
+  const { codigo } = useParams()
+  const { loja, setLoja, nome, setNome, fisicaJuridica, setFisicaJuridica, fantasia, setFantasia, cep, settingCep, handleCep, estado, setEstado, endereco, setEndereco, bairro, setBairro, codigoMunicipio, setCodigoMunicipio, municipio, setMunicipio, pais, setPais, telefone, setTelefone, cnpjCpf, setCnpjCpf, dataNascimento, setDataNascimento, email, setEmail, homePage, setHomePage, tipo, setTipo, handleClick} = UseUpdateItems(codigo)
 
-  const settingCnpjCpf = (ev: { target: { value: SetStateAction<string>; }; }) => {
+	console.log(loja)
+
+  const settingCnpjCpf = (ev: { target: { value: SetStateAction<string>;};}) => {
 		setCnpjCpf(ev.target.value)
 	}
 
@@ -60,7 +62,7 @@ export default function UpdateItem() {
 
 						<Container className="col-span-2">
 							<label htmlFor="">Cd. Municipio</label>
-							<input type="number" value={codigoMunicipio} onChange={(ev) => setCodigoMunicipio(Number(ev.target.value))}/>
+							<input type="number" value={codigoMunicipio} onChange={(ev) => setCodigoMunicipio(ev.target.value)}/>
 						</Container>
 
 						<Container className="col-span-2">
@@ -90,8 +92,8 @@ export default function UpdateItem() {
 							<label htmlFor="">DN</label>
 							<input 
                 type="date" 
-                value={dataNascimento ? dataNascimento.toISOString().split('T')[0] : ''} 
-                onChange={(ev) => setDataNascimento(new Date(ev.target.value))} 
+                value={dataNascimento} 
+                onChange={(ev) => setDataNascimento(ev.target.value)} 
               />
 						</Container>
 						<Container className="col-span-2">
@@ -109,7 +111,9 @@ export default function UpdateItem() {
 					</div>
 				</section>
 
-				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>Salvar</button>
+				<button type="button" className="py-3 px-4 hover:border-indigo-800" onClick={handleClick}>
+					<Link to="/clientes" className="px-3 py-1 text-white font-bold">Confirmar</Link>
+				</button>
 			</form>
   )
 }
