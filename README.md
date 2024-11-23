@@ -83,23 +83,23 @@ O projeto foi desenvolvido seguindo o princípio da arquitetura modular, que org
 
 ```plaintext
 src/
-├── components/      # Componentes reutilizáveis
-├── context/         # Módulos independentes
-├── hooks/           # Módulos independentes
-├── pages/           # Módulos independentes
-│   ├── clientes/        # Lógica de autenticação
-│   │   ├── NewClient/
-│   │       ├── index.tsx  # index do novo client
-│   │       ├── Styles.ts  # Arquivo do styled components
-│   │   ├── ShowClient/
-│   │   ├── UpdateClient/
-│   │   ├── Cliente.txt    
-│   ├── Home.txt     
-├── services/          # variaveis do axios para requisicoes
-├── App.tsx            # Componente raiz
-├── index.css          # Estilos globais e temas
-├── main.tsx           # Ponto de entrada da aplicação
-├── router.txt         # arquivo de configuracao das rotas do projeto
+├── components/             # Contém os componentes reutilizáveis da aplicação
+├── context/                # Gerencia contextos globais da aplicação usando React Context API. 
+├── hooks/                  # Contém hooks customizados para encapsular lógica reutilizável e facilitar o consumo em componentes.
+├── pages/                  # Contém as páginas principais da aplicação organizadas por funcionalidade
+│   ├── clientes/           # Diretório relacionado à funcionalidade de gerenciamento de clientes.
+│   │   ├── NewClient/      # Página para adicionar um novo cliente.
+│   │       ├── index.tsx   # Componente principal para criação de clientes.t
+│   │       ├── Styles.ts   # Estilização específica do componente `NewClient` usando styled-components.
+│   │   ├── ShowClient/     # Página para exibir os detalhes de um cliente específico.
+│   │   ├── UpdateClient/   # Página para editar as informações de um cliente existente.
+│   │   ├── Cliente.txt     # Notas ou lógica inicial relacionada à funcionalidade de clientes (exemplo, para referência).
+│   ├── Home.txt            # Arquivo de notas ou esboço relacionado à página inicial da aplicação.
+├── services/               # Contém configurações e instâncias do Axios para gerenciar requisições HTTP. 
+├── App.tsx                 # Componente raiz
+├── index.css               # Estilos globais e temas
+├── main.tsx                # Ponto de entrada da aplicação
+├── router.txt              # Configuração ou planejamento das rotas do projeto. Geralmente utilizado para definir caminhos e links entre as páginas.
 ```
 
 ## Configuração e Uso
